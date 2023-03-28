@@ -1,0 +1,85 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  description: string;
+  title: string;
+}
+const { description, title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content={`
+        default-src 'self';
+        connect-src 'self';
+        font-src fonts.gstatic.com;
+        form-action 'self';
+        frame-src 'self' https://airtable.com;
+        manifest-src 'self';
+        object-src 'none';
+        script-src 'self' https://vercel.live 'unsafe-inline';
+        style-src 'self' fonts.googleapis.com 'unsafe-inline';
+        style-src-elem 'self' fonts.googleapis.com 'unsafe-inline';
+        upgrade-insecure-requests;
+      `}
+    />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Freeworld" />
+    <meta name="application-name" content="Freeworld" />
+    <meta name="msapplication-TileColor" content="#b0db2a" />
+    <meta name="theme-color" content="#b0db2a" />
+    <title>{title}</title>
+    <script async>
+      if (typeof window !== "undefined") {
+        if (
+          window.location.origin.includes("joinfreeworld.com") ||
+          window.location.origin === "https://www.freeworld.org"
+        ) {
+          window.location.replace("https://freeworld.org");
+        }
+      }
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body class="font-sans mx-auto w-10/12">
+    <Header />
+    <main class="mt-20">
+      <slot />
+    </main>
+    <Footer />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap"
+        rel="stylesheet"
+        type="text/css"
+      />
+    </noscript>
+    <script async>
+      window.onload = function () {
+        document.getElementById("gfonts").setAttribute("media", "all");
+      };
+    </script>
+  </body>
+</html>
