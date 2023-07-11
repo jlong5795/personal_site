@@ -1,13 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import heroImg from "/croods.png";
 ---
 
-<Layout
-	title={SITE_TITLE}
-	description={SITE_DESCRIPTION}
->
-<div>Hero Section</div>
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="grid grid-cols-12">
+		<div class="col-span-6 font-extrabold my-auto p-6 text-6xl">
+			<h1>
+				Jason Long <br />
+				Full Stack <br />
+				Web Developer
+			</h1>
+		</div>
+		<img alt="The Croods" class="col-span-6" src={heroImg} />
+	</section>
+</Layout>
 <div>Newest Element Section</div>
 <div>3 Per Row Element Section</div>
-</Layout>

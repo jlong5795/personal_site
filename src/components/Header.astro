@@ -4,16 +4,15 @@ import HeaderLink from './HeaderLink.astro';
 // TODO: Replace social labels with icons
 ---
 
-<header class="flex py-4 space-x-72">
-	<div class="font-extrabold text-4xl">Hot Coffee</div>
-	<div class="flex">
-		<!-- <i class="max-h-10 material-icons overflow-x-hidden">search</i> -->
-		<input 
+<header class="grid grid-cols-12 py-4">
+	<div class="col-span-12 sm:col-span-3 font-extrabold text-4xl">Hot Coffee</div>
+	<div class="col-span-12 sm:col-span-3">
+		<input
 			placeholder="Search..."	
 			type="text"
 		/>
 	</div>
-	<nav>
+	<nav class="col-span-12 sm:col-span-6 text-right">
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Projects</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
